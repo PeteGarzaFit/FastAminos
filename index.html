@@ -39,6 +39,18 @@ h2.section-title{margin:0;color:var(--ink);font-size:clamp(34px,5vw,54px);line-h
 @media(max-width:520px){.wrap{width:min(100% - 28px,1120px)}.topbar .wrap{min-height:58px}.nav .navcta{padding:10px 12px}.hero{padding:62px 0 58px}.cards{grid-template-columns:1fr}.actions .btn{width:100%;text-align:center}.offer{display:block}.offer strong,.offer .code{display:inline-block;margin-right:7px}.sticky{display:block;position:fixed;left:12px;right:12px;bottom:12px;z-index:20}.sticky a{display:block;text-align:center;background:var(--blue);color:#fff;text-decoration:none;font-weight:900;padding:15px;border-radius:9px;box-shadow:0 10px 30px rgba(0,0,0,.18)}body{padding-bottom:64px}}
 
 .ambassador{padding:78px 0;background:#0f3348;color:#fff}.ambassador h2{color:#fff}.ambassador .eyebrow{color:#8fd0e8}.amb-grid{display:grid;grid-template-columns:1fr .9fr;gap:42px;align-items:center}.amb-copy{font-size:17px;line-height:1.6;color:#dbe7ee}.amb-stats{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin:28px 0}.amb-stat{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.15);border-radius:10px;padding:18px}.amb-stat strong{display:block;font-size:25px;color:#fff}.amb-stat span{display:block;margin-top:4px;font-size:12px;color:#bdd0dc}.amb-card{background:#f4f8fc;color:#173247;border-radius:16px;padding:28px;border:1px solid #d8e4ee}.amb-card .sample{font-size:12px;text-transform:uppercase;letter-spacing:.16em;font-weight:900;color:#667c8d}.amb-card .earn{font-size:38px;font-weight:900;margin:7px 0 18px}.amb-tier{display:flex;justify-content:space-between;border-top:1px solid #d8e1e8;padding:13px 0;font-size:14px}.amb-note{font-size:12px;line-height:1.5;color:#71808c;margin-top:14px}@media(max-width:850px){.amb-grid{grid-template-columns:1fr}}@media(max-width:520px){.amb-stats{grid-template-columns:1fr 1fr}}
+
+.blog{padding:78px 0;background:#f6f9fc;border-top:1px solid #dce5ef}
+.blog-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:38px}
+.blog-card{background:#fff;border:1px solid #dce5ef;border-radius:12px;padding:24px;text-align:left;box-shadow:0 8px 24px rgba(30,62,95,.05)}
+.blog-card .blog-date{font-size:11px;font-weight:900;letter-spacing:.12em;text-transform:uppercase;color:#1769e8}
+.blog-card h3{margin:10px 0 9px;color:#111820;font-size:18px;line-height:1.2}
+.blog-card p{margin:0;color:#6c7784;font-size:14px;line-height:1.55}
+.blog-card a{display:inline-block;margin-top:16px;color:#1769e8;font-size:12px;font-weight:900;text-decoration:none;text-transform:uppercase;letter-spacing:.05em}
+.blog-status{margin-top:18px;font-size:12px;color:#6c7784;text-align:center}
+.blog-status a{color:#1769e8;font-weight:700}
+@media(max-width:850px){.blog-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:520px){.blog-grid{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
@@ -47,7 +59,7 @@ h2.section-title{margin:0;color:var(--ink);font-size:clamp(34px,5vw,54px);line-h
     <div><div class="logo">FAST <span>AMINOS</span></div><div class="logo-sub">FAST SHIPPING • TRUE SCIENCES RESEARCH</div></div>
     <nav class="nav">
       <a href="#quality">QUALITY</a>
-      <a href="#process">HOW IT WORKS</a><a href="#ambassadors">AMBASSADORS</a>
+      <a href="#process">HOW IT WORKS</a><a href="#ambassadors">AMBASSADORS</a><a href="#blog">BLOG</a>
       <a class="navcta" href="https://true-sciences.com/aff/PGFit/" target="_blank" rel="noopener noreferrer">SHOP CATALOG →</a>
     </nav>
   </div>
@@ -129,6 +141,21 @@ h2.section-title{margin:0;color:var(--ink);font-size:clamp(34px,5vw,54px);line-h
   </div>
 </section>
 
+
+<section class="blog" id="blog">
+  <div class="wrap center">
+    <div class="eyebrow">FAST AMINOS RESEARCH JOURNAL</div>
+    <h2 class="section-title">Research &amp; Education.</h2>
+    <p class="section-intro">Research-focused articles and educational resources from the Fast Aminos content feed.</p>
+    <div class="blog-grid" id="soro-blog">
+      <article class="blog-card"><div class="blog-date">Loading</div><h3>Loading the latest articles…</h3><p>Fetching the latest posts from the Fast Aminos research feed.</p></article>
+      <article class="blog-card"><div class="blog-date">FAST AMINOS</div><h3>Research-focused content</h3><p>New articles published through our content feed will appear here automatically.</p></article>
+      <article class="blog-card"><div class="blog-date">FAST AMINOS</div><h3>Documentation &amp; education</h3><p>Explore research terminology, documentation, and supplier information.</p></article>
+    </div>
+    <div class="blog-status" id="soro-blog-status"></div>
+  </div>
+</section>
+
 <section class="final">
   <div class="wrap center">
     <div class="eyebrow">FAST AMINOS</div>
@@ -149,5 +176,71 @@ h2.section-title{margin:0;color:var(--ink);font-size:clamp(34px,5vw,54px);line-h
   © 2026 Fast Aminos. All rights reserved.
 </footer>
 <div class="sticky"><a href="https://true-sciences.com/aff/PGFit/" target="_blank" rel="noopener noreferrer">SHOP CATALOG • GET 10% WITH GET10</a></div>
+
+<script>
+(function(){
+  const FEED_URL = 'https://app.trysoro.com/api/rss/01d05367-4466-45bd-9e53-747765ec4140';
+  const grid = document.getElementById('soro-blog');
+  const status = document.getElementById('soro-blog-status');
+  if(!grid) return;
+
+  function cleanText(value){
+    const div=document.createElement('div');
+    div.innerHTML=value||'';
+    return (div.textContent||div.innerText||'').replace(/\\s+/g,' ').trim();
+  }
+  function esc(value){
+    return String(value||'').replace(/[&<>"']/g,function(ch){
+      return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[ch];
+    });
+  }
+  function firstText(el, names){
+    for(const name of names){
+      const node=el.querySelector(name);
+      if(node && node.textContent) return node.textContent.trim();
+    }
+    return '';
+  }
+  function parseDate(value){
+    const d=new Date(value);
+    if(isNaN(d)) return '';
+    return d.toLocaleDateString('en-US',{year:'numeric',month:'short',day:'numeric'});
+  }
+
+  fetch(FEED_URL, {mode:'cors'})
+    .then(function(res){
+      if(!res.ok) throw new Error('Feed unavailable');
+      return res.text();
+    })
+    .then(function(xmlText){
+      const xml=new DOMParser().parseFromString(xmlText,'application/xml');
+      if(xml.querySelector('parsererror')) throw new Error('Invalid RSS');
+      let items=[...xml.querySelectorAll('item')];
+      if(!items.length) items=[...xml.querySelectorAll('entry')];
+
+      if(!items.length) throw new Error('No articles found');
+
+      const cards=items.slice(0,6).map(function(item){
+        const title=firstText(item,['title']) || 'Research article';
+        const linkNode=item.querySelector('link');
+        let link=linkNode ? (linkNode.getAttribute('href') || linkNode.textContent.trim()) : '';
+        if(!link){
+          const guid=item.querySelector('guid');
+          link=guid ? guid.textContent.trim() : '';
+        }
+        const desc=firstText(item,['description','summary','content\:encoded','content']) || '';
+        const date=firstText(item,['pubDate','published','updated']);
+        return '<article class="blog-card"><div class="blog-date">'+esc(parseDate(date)||'FAST AMINOS')+'</div><h3>'+esc(cleanText(title))+'</h3><p>'+esc(cleanText(desc).slice(0,190))+(cleanText(desc).length>190?'…':'')+'</p>'+(link?'<a href="'+esc(link)+'" target="_blank" rel="noopener noreferrer">READ ARTICLE →</a>':'')+'</article>';
+      }).join('');
+      grid.innerHTML=cards;
+      status.innerHTML='Powered by the Fast Aminos research feed.';
+    })
+    .catch(function(){
+      grid.innerHTML='<article class="blog-card"><div class="blog-date">FAST AMINOS RESEARCH JOURNAL</div><h3>Latest research articles</h3><p>The article feed is available directly through our content publisher.</p><a href="'+FEED_URL+'" target="_blank" rel="noopener noreferrer">OPEN RSS FEED →</a></article>';
+      status.innerHTML='If articles do not load automatically, use the RSS feed link above.';
+    });
+})();
+</script>
+
 </body>
 </html>
