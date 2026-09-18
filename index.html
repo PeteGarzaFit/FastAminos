@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fast Aminos | True Sciences Research</title>
+<meta name="description" content="Explore the True Sciences research catalog through Fast Aminos. Use code GET10 to save 10% on qualifying purchases.">
+<style>
+  :root {
+    --blue: #1769e8;
+    --black: #0b0d10;
+    --text: #20242a;
+    --muted: #66707c;
+    --light: #f5f8fc;
+    --line: #dce4ee;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    color: var(--text);
+    background: #fff;
+  }
+  .hero {
+    min-height: 720px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 70px 22px;
+    background:
+      linear-gradient(180deg, rgba(255,255,255,.96), rgba(245,248,252,.96)),
+      radial-gradient(circle at 80% 20%, #dbeaff 0, transparent 35%);
+  }
+  .wrap { width: min(1080px, 100%); margin: auto; }
+  .brand {
+    font-size: 18px;
+    font-weight: 800;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    margin-bottom: 55px;
+  }
+  .brand span { color: var(--blue); }
+  .eyebrow {
+    color: var(--blue);
+    font-weight: 800;
+    letter-spacing: .18em;
+    text-transform: uppercase;
+    font-size: 13px;
+    margin-bottom: 18px;
+  }
+  h1 {
+    margin: 0;
+    max-width: 800px;
+    font-size: clamp(46px, 8vw, 86px);
+    line-height: .94;
+    letter-spacing: -.045em;
+    text-transform: uppercase;
+    color: var(--black);
+  }
+  h1 span { color: var(--blue); }
+  .sub {
+    max-width: 690px;
+    font-size: clamp(19px, 2.5vw, 25px);
+    line-height: 1.45;
+    margin: 28px 0 34px;
+    color: #3e4650;
+  }
+  .offer {
+    display: inline-flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 14px;
+    padding: 18px 22px;
+    border: 1px solid #c8d8ed;
+    border-radius: 12px;
+    background: rgba(255,255,255,.9);
+    margin-bottom: 28px;
+  }
+  .offer strong {
+    font-size: 31px;
+    color: var(--black);
+  }
+  .offer .code {
+    color: var(--blue);
+    font-weight: 900;
+    font-size: 25px;
+    letter-spacing: .03em;
+  }
+  .cta {
+    display: inline-block;
+    background: var(--blue);
+    color: white;
+    text-decoration: none;
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: .04em;
+    padding: 18px 32px;
+    border-radius: 8px;
+    font-size: 17px;
+    box-shadow: 0 10px 25px rgba(23,105,232,.20);
+  }
+  .note {
+    margin-top: 18px;
+    font-size: 12px;
+    line-height: 1.55;
+    color: #6c7480;
+    max-width: 720px;
+  }
+  .section {
+    padding: 70px 22px;
+  }
+  .section.light { background: var(--light); }
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 18px;
+    margin-top: 35px;
+  }
+  .card {
+    background: white;
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    padding: 27px 22px;
+  }
+  .icon {
+    color: var(--blue);
+    font-weight: 900;
+    font-size: 24px;
+    margin-bottom: 15px;
+  }
+  .card h3 {
+    margin: 0 0 10px;
+    font-size: 17px;
+    text-transform: uppercase;
+  }
+  .card p {
+    margin: 0;
+    color: var(--muted);
+    line-height: 1.55;
+    font-size: 14px;
+  }
+  .center { text-align: center; }
+  h2 {
+    margin: 0;
+    font-size: clamp(32px, 5vw, 52px);
+    text-transform: uppercase;
+    letter-spacing: -.03em;
+    color: var(--black);
+  }
+  .footer {
+    padding: 35px 22px;
+    border-top: 1px solid var(--line);
+    text-align: center;
+    font-size: 12px;
+    line-height: 1.6;
+    color: #737b85;
+  }
+  @media (max-width: 760px) {
+    .hero { min-height: auto; padding: 42px 20px 65px; }
+    .brand { margin-bottom: 65px; }
+    .grid { grid-template-columns: 1fr 1fr; }
+  }
+  @media (max-width: 480px) {
+    .grid { grid-template-columns: 1fr; }
+    .offer { display: block; }
+    .offer strong, .offer .code { display: block; margin-bottom: 5px; }
+    .cta { width: 100%; text-align: center; }
+  }
+</style>
+</head>
+<body>
+
+<section class="hero">
+  <div class="wrap">
+    <div class="brand">FAST <span>AMINOS</span></div>
+
+    <div class="eyebrow">Research Starts With Quality</div>
+
+    <h1>PURE RESEARCH.<br><span>SMARTER VALUE.</span></h1>
+
+    <p class="sub">
+      Explore the True Sciences research catalog with a focus on quality,
+      transparency, and research documentation.
+    </p>
+
+    <div class="offer">
+      <strong>SAVE 10%</strong>
+      <span>Use code:</span>
+      <span class="code">GET10</span>
+    </div>
+
+    <br>
+
+    <!-- Replace # with your True Sciences affiliate/catalog URL -->
+    <a class="cta" href="https://true-sciences.com/aff/PGFit/" target="_blank" rel="noopener noreferrer">
+      SHOP CATALOG →
+    </a>
+
+    <div class="note">
+      For laboratory research use only. Not for human consumption.
+      Not for veterinary use. Products and information are intended solely
+      for legitimate research purposes.
+    </div>
+  </div>
+</section>
+
+<section class="section light">
+  <div class="wrap center">
+    <h2>Research. Quality. Transparency.</h2>
+
+    <div class="grid">
+      <div class="card">
+        <div class="icon">01</div>
+        <h3>Research Focused</h3>
+        <p>Access a catalog intended for legitimate laboratory research applications.</p>
+      </div>
+      <div class="card">
+        <div class="icon">02</div>
+        <h3>Quality Information</h3>
+        <p>Review available product and testing information before making a research purchase.</p>
+      </div>
+      <div class="card">
+        <div class="icon">03</div>
+        <h3>Transparent Value</h3>
+        <p>Explore pricing and available research products through the True Sciences catalog.</p>
+      </div>
+      <div class="card">
+        <div class="icon">04</div>
+        <h3>10% Savings</h3>
+        <p>Use promotional code <strong>GET10</strong> at True Sciences to receive 10% off, subject to applicable terms.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap center">
+    <div class="eyebrow">FAST AMINOS × TRUE SCIENCES</div>
+    <h2>Ready to explore?</h2>
+    <p class="sub" style="margin-left:auto;margin-right:auto;">
+      Visit the True Sciences research catalog and use code
+      <strong>GET10</strong> at checkout.
+    </p>
+    <!-- Replace # with your True Sciences affiliate/catalog URL -->
+    <a class="cta" href="https://true-sciences.com/aff/PGFit/" target="_blank" rel="noopener noreferrer">
+      SHOP CATALOG →
+    </a>
+  </div>
+</section>
+
+<footer class="footer">
+  Fast Aminos may receive compensation from qualifying purchases made through links on this website.
+  <br>
+  Fast Aminos is not a manufacturer of the products referenced on this page.
+  <br><br>
+  © 2026 Fast Aminos. All rights reserved.
+</footer>
+
+</body>
+</html>
