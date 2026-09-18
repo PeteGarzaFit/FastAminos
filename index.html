@@ -147,12 +147,9 @@ h2.section-title{margin:0;color:var(--ink);font-size:clamp(34px,5vw,54px);line-h
     <div class="eyebrow">FAST AMINOS RESEARCH JOURNAL</div>
     <h2 class="section-title">Research &amp; Education.</h2>
     <p class="section-intro">Research-focused articles and educational resources from the Fast Aminos content feed.</p>
-    <div class="blog-grid" id="soro-blog">
-      <article class="blog-card"><div class="blog-date">Loading</div><h3>Loading the latest articles…</h3><p>Fetching the latest posts from the Fast Aminos research feed.</p></article>
-      <article class="blog-card"><div class="blog-date">FAST AMINOS</div><h3>Research-focused content</h3><p>New articles published through our content feed will appear here automatically.</p></article>
-      <article class="blog-card"><div class="blog-date">FAST AMINOS</div><h3>Documentation &amp; education</h3><p>Explore research terminology, documentation, and supplier information.</p></article>
-    </div>
-    <div class="blog-status" id="soro-blog-status"></div>
+    <div id="soro-blog"></div>
+    <script src="https://app.trysoro.com/api/embed/01d05367-4466-45bd-9e53-747765ec4140" defer></script>
+
   </div>
 </section>
 
@@ -177,70 +174,7 @@ h2.section-title{margin:0;color:var(--ink);font-size:clamp(34px,5vw,54px);line-h
 </footer>
 <div class="sticky"><a href="https://true-sciences.com/aff/PGFit/" target="_blank" rel="noopener noreferrer">SHOP CATALOG • GET 10% WITH GET10</a></div>
 
-<script>
-(function(){
-  const FEED_URL = 'https://app.trysoro.com/api/rss/01d05367-4466-45bd-9e53-747765ec4140';
-  const grid = document.getElementById('soro-blog');
-  const status = document.getElementById('soro-blog-status');
-  if(!grid) return;
 
-  function cleanText(value){
-    const div=document.createElement('div');
-    div.innerHTML=value||'';
-    return (div.textContent||div.innerText||'').replace(/\\s+/g,' ').trim();
-  }
-  function esc(value){
-    return String(value||'').replace(/[&<>"']/g,function(ch){
-      return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[ch];
-    });
-  }
-  function firstText(el, names){
-    for(const name of names){
-      const node=el.querySelector(name);
-      if(node && node.textContent) return node.textContent.trim();
-    }
-    return '';
-  }
-  function parseDate(value){
-    const d=new Date(value);
-    if(isNaN(d)) return '';
-    return d.toLocaleDateString('en-US',{year:'numeric',month:'short',day:'numeric'});
-  }
-
-  fetch(FEED_URL, {mode:'cors'})
-    .then(function(res){
-      if(!res.ok) throw new Error('Feed unavailable');
-      return res.text();
-    })
-    .then(function(xmlText){
-      const xml=new DOMParser().parseFromString(xmlText,'application/xml');
-      if(xml.querySelector('parsererror')) throw new Error('Invalid RSS');
-      let items=[...xml.querySelectorAll('item')];
-      if(!items.length) items=[...xml.querySelectorAll('entry')];
-
-      if(!items.length) throw new Error('No articles found');
-
-      const cards=items.slice(0,6).map(function(item){
-        const title=firstText(item,['title']) || 'Research article';
-        const linkNode=item.querySelector('link');
-        let link=linkNode ? (linkNode.getAttribute('href') || linkNode.textContent.trim()) : '';
-        if(!link){
-          const guid=item.querySelector('guid');
-          link=guid ? guid.textContent.trim() : '';
-        }
-        const desc=firstText(item,['description','summary','content\:encoded','content']) || '';
-        const date=firstText(item,['pubDate','published','updated']);
-        return '<article class="blog-card"><div class="blog-date">'+esc(parseDate(date)||'FAST AMINOS')+'</div><h3>'+esc(cleanText(title))+'</h3><p>'+esc(cleanText(desc).slice(0,190))+(cleanText(desc).length>190?'…':'')+'</p>'+(link?'<a href="'+esc(link)+'" target="_blank" rel="noopener noreferrer">READ ARTICLE →</a>':'')+'</article>';
-      }).join('');
-      grid.innerHTML=cards;
-      status.innerHTML='Powered by the Fast Aminos research feed.';
-    })
-    .catch(function(){
-      grid.innerHTML='<article class="blog-card"><div class="blog-date">FAST AMINOS RESEARCH JOURNAL</div><h3>Latest research articles</h3><p>The article feed is available directly through our content publisher.</p><a href="'+FEED_URL+'" target="_blank" rel="noopener noreferrer">OPEN RSS FEED →</a></article>';
-      status.innerHTML='If articles do not load automatically, use the RSS feed link above.';
-    });
-})();
-</script>
 
 </body>
 </html>
